@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Tag</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h1>Tag</h1>
+  <form th:action="${'/tag/' + tag.id}" th:method="PUT">
+    <label for="name">Name</label>
+    <input th:value="${tag.name}" type="text" name="name" id="name">
+
+    <br>
+    <label for="color">Color</label>
+    <input th:value="${tag.color}" type="color" name="color" id="color">
+
+    <input type="submit" value="💾 Update">
+  </form>
+
+  <form th:action="${'/tag/' + tag.id}" th:method="DELETE">
+    <input class="secondary" type="submit" value="🗑 Delete">
+  </form>
+</main>
+</body>
+</html>

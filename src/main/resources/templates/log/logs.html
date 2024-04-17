@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logs</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h1>[[${productName}]] Logs</h1>
+  <table>
+    <thead>
+    <tr>
+      <th scope="col">Action</th>
+      <th scope="col">User</th>
+      <th scope="col">Timestamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="log : ${logs}">
+      <td th:text="${log.action}"></td>
+      <td th:text="${log.user?.username} ?: 'someone else'"></td>
+      <td th:text="${#temporals.format(log.timestamp, 'dd-MM-yyyy HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

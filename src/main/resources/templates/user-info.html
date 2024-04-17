@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h1>My Profile</h1>
+  <form th:action="${'/user/' + userId}" th:method="PUT">
+    <label for="username">Username</label>
+    <input th:value="${username}" type="text" name="username" id="username">
+
+    <br>
+    <label for="dateOfBirth">Date of birth</label>
+    <input th:value="${dateOfBirth}" type="date" name="dateOfBirth" id="dateOfBirth">
+
+    <input type="submit" value="Edit User Info">
+  </form>
+</main>
+</body>
+</html>

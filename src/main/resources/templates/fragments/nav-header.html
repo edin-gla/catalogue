@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<nav th:fragment="navigation(isAuth)">
+  <ul>
+    <li><a href="/"><strong>Catalogue 📖</strong></a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/product/list">Products</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/tag/list">Tags</a></li>
+  </ul>
+  <ul th:if="!${isAuth}">
+    <li sec:authorize="!isAuthenticated()"><a href="/auth/login">Log In</a></li>
+    <li sec:authorize="!isAuthenticated()"><a href="/auth/signup">Sign Up</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/user">👤 My Profile</a></li>
+    <li sec:authorize="isAuthenticated()"><a href="/logout">Log Out</a></li>
+  </ul>
+</nav>
+</body>
+</html>

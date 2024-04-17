@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=true)}"></div>
+
+  <h1>Sign Up!</h1>
+  <form action="/auth/signup" method="POST">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username">
+
+    <br>
+    <label for="dateOfBirth">Date of birth</label>
+    <input type="date" name="dateOfBirth" id="dateOfBirth">
+
+    <br>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+
+    <input type="submit" value="Sign Up">
+  </form>
+  <h5>(Already have an account? Log in <a href="/auth/login">here</a>.)</h5>
+</main>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tags</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h1>Tags</h1>
+  <a href="/tag/add">✛ Add New Tag</a>
+
+  <table>
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Color</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tag : ${tags}">
+      <td th:text="${tag.name}" th:style="'background-color:' + ${tag.color}"></td>
+      <td th:text="${tag.color}"></td>
+      <td>
+        <a th:href="@{/tag/edit/{id}(id=${tag.id})}">✎ Edit</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</main>
+</body>
+</html>

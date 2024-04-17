@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h3 th:if="${username != null}" th:text="${'Hi ' + username + ' 👋 (' + #temporals.format(dateOfBirth, 'yyyy-MM-dd') + ')'}"></h3>
+  <h1>Welcome to Catalogue 📖</h1>
+</main>
+</body>
+</html>

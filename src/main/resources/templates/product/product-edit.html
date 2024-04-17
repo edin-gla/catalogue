@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Product</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+</head>
+<body>
+<main class="container">
+  <div th:replace="~{fragments/nav-header.html :: navigation(isAuth=false)}"></div>
+
+  <h1>Product</h1>
+  <form th:action="${'/product/' + product.id}" th:method="PUT">
+    <label for="name">Name</label>
+    <input th:value="${product.name}" type="text" name="name" id="name">
+
+    <br>
+    <label for="quantity">Quantity</label>
+    <input th:value="${product.quantity}" type="number" name="quantity" id="quantity">
+
+    <br>
+    <fieldset>
+      <legend>Tags</legend>
+      <label th:each="tag : ${tags}">
+        <input th:value="${tag.id}" type="checkbox" name="tags"
+               th:checked="${tag.selected}">
+        [[${tag.name}]]
+      </label>
+    </fieldset>
+
+    <input type="submit" value="💾 Update">
+  </form>
+
+  <form th:action="${'/product/' + product.id}" th:method="DELETE">
+    <input class="secondary" type="submit" value="🗑 Delete">
+  </form>
+</main>
+</body>
+</html>
