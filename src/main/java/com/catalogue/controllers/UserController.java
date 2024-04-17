@@ -34,7 +34,7 @@ public class UserController {
   }
 
   @PutMapping("/{id}")
-  public RedirectView editUserInfo(Model m, Principal p, @PathVariable Long id, String username,
+  public RedirectView editUserInfo(@PathVariable Long id, String username,
                                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfBirth) {
     CatalogueUser catalogueUser = catalogueUserRepository.findById(id).orElseThrow();
     boolean isUsernameUpdated = false;
@@ -45,7 +45,7 @@ public class UserController {
     catalogueUser.setDateOfBirth(dateOfBirth);
     catalogueUserRepository.save(catalogueUser);
 
-    if(isUsernameUpdated) {
+    if (isUsernameUpdated) {
       SecurityContextHolder.clearContext(); // log out user
       return new RedirectView("/auth/login");
     }

@@ -2,7 +2,6 @@ package com.catalogue.controllers;
 
 import com.catalogue.models.CatalogueUser;
 import com.catalogue.repositories.CatalogueUserRepository;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -48,15 +47,6 @@ public class AuthController {
     catalogueUser.setPassword(encryptedPassword);
     catalogueUserRepository.save(catalogueUser);
     return new RedirectView("/");
-  }
-
-  public void authWithHttpServletRequest(String username, String password) {
-    try {
-      request.login(username, password);
-    } catch (ServletException e) {
-      System.out.println("Error while logging in.");
-      e.printStackTrace();
-    }
   }
 
 }

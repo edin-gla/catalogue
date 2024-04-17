@@ -56,9 +56,7 @@ public class ProductController {
     Product product = productRepository.findById(id).orElseThrow();
     m.addAttribute("product", product);
     List<Tag> tags = tagRepository.findAll();
-    tags.forEach(tag -> {
-      tag.setSelected(product.getTags().contains(tag));
-    });
+    tags.forEach(tag -> tag.setSelected(product.getTags().contains(tag)));
     m.addAttribute("tags", tags);
 
     CatalogueUser user = catalogueUserRepository.findByUsername(p.getName());
